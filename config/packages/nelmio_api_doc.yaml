@@ -44,7 +44,7 @@ nelmio_api_doc:
                                                 example: "eyJ0eXAiOiJKV1QiLCJhbGci..."
                         401:
                             description: Identifiants invalides
-                            
+
             /api/contact:
                 post:
                     summary: Soumettre une demande de contact via un formulaire JSON
@@ -64,20 +64,20 @@ nelmio_api_doc:
                                             example: DPI
                                         name:
                                             type: string
-                                            example: Jean Dupont
+                                            example: Bob L'éponge
                                         function:
                                             type: string
                                             example: Responsable IT
                                         mail:
                                             type: string
                                             format: email
-                                            example: jean@dpi.fr
+                                            example: bob@dpi.fr
                                         phone:
                                             type: string
                                             example: 0601020304
                                         comment:
                                             type: string
-                                            example: Bonjour, j’aimerais un site.
+                                            example: C'est carré comme Bob.
                                         recaptchaToken:
                                             type: string
                                             example: abcdef...

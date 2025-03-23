@@ -7,7 +7,8 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/_doc-only-contact')]
-
+class ContactDocController extends AbstractController
+{
 #[OA\Post(
     path: '/api/contact',
     summary: 'Soumettre une demande de contact via un formulaire JSON',
@@ -37,4 +38,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     ],
     tags: ['Contact']
 )]
-class ContactDocController {}
+    public function docOnly(): void
+    {
+    }
+}
