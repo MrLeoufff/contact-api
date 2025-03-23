@@ -4,6 +4,14 @@ nelmio_api_doc:
             title: 'Contact API'
             version: '1.0.0'
             description: "Documentation de l'API de formulaire de contact sécurisée"
+        components:
+            securitySchemes:
+                Bearer:
+                    type: http
+                    scheme: bearer
+                    bearerFormat: JWT
+        security:
+            - Bearer: []
         paths:
             /api/login:
                 post:
@@ -22,7 +30,7 @@ nelmio_api_doc:
                                             example: admin
                                         password:
                                             type: string
-                                            example: admin
+                                            example: password
                     responses:
                         200:
                             description: Token JWT
@@ -36,7 +44,7 @@ nelmio_api_doc:
                                                 example: "eyJ0eXAiOiJKV1QiLCJhbGci..."
                         401:
                             description: Identifiants invalides
-
+                            
             /api/contact:
                 post:
                     summary: Soumettre une demande de contact via un formulaire JSON
