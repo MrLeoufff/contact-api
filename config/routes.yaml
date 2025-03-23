@@ -6,3 +6,7 @@ controllers:
 
 /api/login:
     path: /api/login
+
+nelmio_api_doc:
+    path: /api/doc
+    controller: nelmio_api_doc.controller.swagger_ui

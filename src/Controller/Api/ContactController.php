@@ -11,9 +11,13 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Service\ContactFormValidator;
+use App\Controller\Doc\LoginDocController;
+use App\Controller\Doc\ContactDocController;
+
 
 final class ContactController extends AbstractController{
     #[Route('/api/contact', name: 'api_contact', methods: ['POST'])]
+
     public function contact(
         Request $request, 
         MailerInterface $mailer,

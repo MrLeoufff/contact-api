@@ -1,0 +1,86 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: 'Contact API'
+            version: '1.0.0'
+            description: "Documentation de l'API de formulaire de contact sécurisée"
+        paths:
+            /api/login:
+                post:
+                    summary: Obtenir un token JWT
+                    tags: [Authentification]
+                    requestBody:
+                        required: true
+                        content:
+                            application/json:
+                                schema:
+                                    type: object
+                                    required: [username, password]
+                                    properties:
+                                        username:
+                                            type: string
+                                            example: admin
+                                        password:
+                                            type: string
+                                            example: admin
+                    responses:
+                        200:
+                            description: Token JWT
+                            content:
+                                application/json:
+                                    schema:
+                                        type: object
+                                        properties:
+                                            token:
+                                                type: string
+                                                example: "eyJ0eXAiOiJKV1QiLCJhbGci..."
+                        401:
+                            description: Identifiants invalides
+
+            /api/contact:
+                post:
+                    summary: Soumettre une demande de contact via un formulaire JSON
+                    tags: [Contact]
+                    security:
+                        - Bearer: []
+                    requestBody:
+                        required: true
+                        content:
+                            application/json:
+                                schema:
+                                    type: object
+                                    required: [mail, name, phone, comment, recaptchaToken]
+                                    properties:
+                                        company:
+                                            type: string
+                                            example: DPI
+                                        name:
+                                            type: string
+                                            example: Jean Dupont
+                                        function:
+                                            type: string
+                                            example: Responsable IT
+                                        mail:
+                                            type: string
+                                            format: email
+                                            example: jean@dpi.fr
+                                        phone:
+                                            type: string
+                                            example: 0601020304
+                                        comment:
+                                            type: string
+                                            example: Bonjour, j’aimerais un site.
+                                        recaptchaToken:
+                                            type: string
+                                            example: abcdef...
+                    responses:
+                        202:
+                            description: Demande envoyée avec succès
+                        400:
+                            description: Erreur de validation ou reCAPTCHA
+                        429:
+                            description: Trop de requêtes
+    areas:
+        default:
+            path_patterns:
+                - ^/api
